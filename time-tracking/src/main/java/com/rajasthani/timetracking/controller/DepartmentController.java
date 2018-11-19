@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.rajasthani.timetracking.model.Department;
 import com.rajasthani.timetracking.repository.DepartmentRepository;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 public class DepartmentController {
 
 	Logger logger = LoggerFactory.getLogger(DepartmentController.class);
@@ -49,7 +51,7 @@ public class DepartmentController {
 	@PostMapping("/departments")
 	public ResponseEntity<Object> create(@RequestBody Department entity) {
 		Department saved = repository.save(entity);
-		logger.info("Created Employee {}", saved);
+		logger.info("Created Department {}", saved);
 
 		return ResponseEntity.ok(saved);
 
@@ -65,7 +67,7 @@ public class DepartmentController {
 
 		entity.setId(id);
 		repository.save(entity);
-		logger.info("Updated Entity {}", entity);
+		logger.info("Updated Department {}", entity);
 		return ResponseEntity.ok(entity);
 	}
 

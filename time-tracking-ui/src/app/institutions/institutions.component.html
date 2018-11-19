@@ -1,0 +1,32 @@
+<div>
+  <h2>Institutions</h2>
+</div>
+<app-messages></app-messages>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">
+          <button class="btn btn-primary btn-sm" role="button" data-toggle="modal" data-target="#institutionDetail" (click)="clearSelectedInstitution()">Add New</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let institution of institutions" [class.selected]="institution === selectedInstitution">
+      <tr scope="row">
+        <td>{{institution.id}}</td>
+        <td>{{institution.name}}</td>
+        <td>{{institution.description}}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" role="button" data-toggle="modal" data-target="#institutionDetail" (click)="onSelect(institution)">Update</button>
+          &nbsp;
+          <button class="btn btn-primary btn-sm" role="button" (click)="delete(institution)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-instititution-detail [institution]="selectedInstitution"></app-instititution-detail>

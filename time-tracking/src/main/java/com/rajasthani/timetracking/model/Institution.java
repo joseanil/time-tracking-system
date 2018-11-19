@@ -26,5 +26,5 @@ public class Institution {
 	
 	@OneToOne
 	private Address address;
-	
+
 }
